@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Roles</title>
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+
+<body>
+    <%- include('../partials/nav') %>
+        <div class="container">
+            <h1>Roles</h1>
+            <a href="/roles/crear" class="btn btn-primary">Crear nuevo rol</a>
+            <br><br>
+            <table>
+                <tr>
+                    <th>Nombre</th>
+                    <th>Acciones</th>
+                </tr>
+                <% roles.forEach(rol=> { %>
+                    <tr>
+                        <td>
+                            <%= rol.nombre %>
+                        </td>
+                        <td>
+                            <a href="/roles/<%= rol.id %>/editar" class="btn btn-primary">Editar permisos</a>
+                            <a href="/roles/eliminar/<%= rol.id %>" class="btn btn-danger">Eliminar</a>
+                        </td>
+                    </tr>
+                    <% }) %>
+            </table>
+        </div>
+</body>
+
+</html>

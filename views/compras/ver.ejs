@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Detalle de Compra</title>
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+
+<body>
+    <%- include('../partials/nav') %>
+        <div class="container">
+            <div class="card">
+                <h1>Compra #<%= compra.id %>
+                </h1>
+                <p>Usuario: <%= compra.usuario %>
+                </p>
+                <p>Fecha: <%= compra.fecha %>
+                </p>
+                <p>Total: $<%= compra.total %>
+                </p>
+                <br>
+                <h3>Productos:</h3>
+                <table>
+                    <tr>
+                        <th>Producto</th>
+                        <th>Cantidad</th>
+                        <th>Precio</th>
+                        <th>Subtotal</th>
+                    </tr>
+                    <% detalles.forEach(detalle=> { %>
+                        <tr>
+                            <td>
+                                <%= detalle.nombre %>
+                            </td>
+                            <td>
+                                <%= detalle.cantidad %>
+                            </td>
+                            <td>$<%= detalle.precio %>
+                            </td>
+                            <td>$<%= detalle.precio * detalle.cantidad %>
+                            </td>
+                        </tr>
+                        <% }) %>
+                </table>
+                <br>
+                <a href="/compras" class="btn btn-danger">Volver</a>
+            </div>
+        </div>
+</body>
+
+</html>

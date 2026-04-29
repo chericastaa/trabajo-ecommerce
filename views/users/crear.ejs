@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Crear Usuario</title>
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+
+<body>
+    <%- include('../partials/nav') %>
+        <div class="container">
+            <div class="card">
+                <h1>Crear nuevo usuario</h1>
+                <br>
+                <form method="POST" action="/users/crear">
+                    <label>Nombre:</label>
+                    <input type="text" name="nombre" required>
+                    <label>Email:</label>
+                    <input type="email" name="email" required>
+                    <label>Rol:</label>
+                    <select name="rol_id">
+                        <% roles.forEach(rol=> { %>
+                            <option value="<%= rol.id %>">
+                                <%= rol.nombre %>
+                            </option>
+                            <% }) %>
+                    </select>
+                    <button type="submit">Crear</button>
+                </form>
+                <br>
+                <a href="/users" class="btn btn-danger">Volver</a>
+            </div>
+        </div>
+</body>
+
+</html>

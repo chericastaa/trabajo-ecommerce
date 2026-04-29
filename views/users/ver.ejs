@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Ver Usuario</title>
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+
+<body>
+    <%- include('../partials/nav') %>
+        <div class="container">
+            <div class="card">
+                <h1>
+                    <%= user.nombre %>
+                </h1>
+                <p>Email: <%= user.email %>
+                </p>
+                <p>Rol: <%= user.rol %>
+                </p>
+                <br>
+                <h3>Permisos de su rol:</h3>
+                <% if (permisos.length===0) { %>
+                    <p>Este rol no tiene permisos asignados</p>
+                    <% } else { %>
+                        <ul>
+                            <% permisos.forEach(permiso=> { %>
+                                <li>
+                                    <%= permiso.nombre %>
+                                </li>
+                                <% }) %>
+                        </ul>
+                        <% } %>
+                            <br>
+                            <a href="/users" class="btn btn-danger">Volver</a>
+            </div>
+        </div>
+</body>
+
+</html>

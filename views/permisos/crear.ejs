@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Crear Permiso</title>
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+
+<body>
+    <%- include('../partials/nav') %>
+        <div class="container">
+            <div class="card">
+                <h1>Crear nuevo permiso</h1>
+                <br>
+                <form method="POST" action="/permisos/crear">
+                    <label>Nombre del permiso:</label>
+                    <input type="text" name="nombre" required>
+                    <button type="submit">Crear</button>
+                </form>
+                <br>
+                <a href="/permisos" class="btn btn-danger">Volver</a>
+            </div>
+        </div>
+</body>
+
+</html>

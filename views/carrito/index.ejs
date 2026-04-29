@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Carrito</title>
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+
+<body>
+    <%- include('../partials/nav') %>
+        <div class="container">
+            <h1>Carrito</h1>
+            <% if (items.length===0) { %>
+                <p>El carrito está vacío</p>
+                <% } else { %>
+                    <table>
+                        <tr>
+                            <th>Producto</th>
+                            <th>Precio</th>
+                            <th>Cantidad</th>
+                            <th>Subtotal</th>
+                            <th>Acciones</th>
+                        </tr>
+                        <% items.forEach(item=> { %>
+                            <tr>
+                                <td>
+                                    <%= item.nombre %>
+                                </td>
+                                <td>$<%= item.precio %>
+                                </td>
+                                <td>
+                                    <%= item.cantidad %>
+                                </td>
+                                <td>$<%= item.precio * item.cantidad %>
+                                </td>
+                                <td>
+                                    <a href="/carrito/eliminar/<%= item.id %>" class="btn btn-danger">Eliminar</a>
+                                </td>
+                            </tr>
+                            <% }) %>
+                    </table>
+                    <br>
+                    <h3>Total: $<%= total %>
+                    </h3>
+                    <br>
+                    <form method="POST" action="/carrito/confirmar">
+                        <button type="submit">Confirmar compra</button>
+                    </form>
+                    <% } %>
+                        <br>
+                        <a href="/productos" class="btn btn-primary">Seguir comprando</a>
+        </div>
+</body>
+
+</html>

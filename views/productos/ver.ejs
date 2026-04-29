@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <title>
+        <%= producto.nombre %>
+    </title>
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+
+<body>
+    <%- include('../partials/nav') %>
+        <div class="container">
+            <div class="card">
+                <% if (producto.imagen) { %>
+                    <img src="<%= producto.imagen %>" alt="<%= producto.nombre %>"
+                        style="width: 100%; max-height: 400px; object-fit: cover; border-radius: 12px; margin-bottom: 20px;">
+                    <% } %>
+                        <h1>
+                            <%= producto.nombre %>
+                        </h1>
+                        <p class="precio">$<%= producto.precio %>
+                        </p>
+                        <p class="stock">Stock disponible: <%= producto.stock %>
+                        </p>
+                        <br>
+                        <p class="descripcion">
+                            <%= producto.descripcion %>
+                        </p>
+                        <br>
+                        <% if (user) { %>
+                            <form method="POST" action="/carrito/agregar">
+                                <input type="hidden" name="producto_id" value="<%= producto.id %>">
+                                <label>Cantidad:</label>
+                                <input type="number" name="cantidad" value="1" min="1" max="<%= producto.stock %>"
+                                    style="width: 80px">
+                                <br><br>
+                                <button type="submit">Agregar al carrito</button>
+                            </form>
+                            <% } else { %>
+                                <a href="/auth/login" class="btn btn-primary">Ingresá para comprar</a>
+                                <% } %>
+                                    <br>
+                                    <a href="/productos" class="btn btn-danger">Volver</a>
+            </div>
+        </div>
+</body>
+
+</html>

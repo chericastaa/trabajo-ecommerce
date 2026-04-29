@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Mis Compras</title>
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+
+<body>
+    <%- include('../partials/nav') %>
+        <div class="container">
+            <h1>Historial de compras</h1>
+            <% if (compras.length===0) { %>
+                <p>No hay compras registradas</p>
+                <% } else { %>
+                    <table>
+                        <tr>
+                            <th>#</th>
+                            <th>Fecha</th>
+                            <th>Total</th>
+                            <th>Acciones</th>
+                        </tr>
+                        <% compras.forEach(compra=> { %>
+                            <tr>
+                                <td>
+                                    <%= compra.id %>
+                                </td>
+                                <td>
+                                    <%= compra.fecha %>
+                                </td>
+                                <td>$<%= compra.total %>
+                                </td>
+                                <td>
+                                    <a href="/compras/<%= compra.id %>" class="btn btn-primary">Ver detalle</a>
+                                </td>
+                            </tr>
+                            <% }) %>
+                    </table>
+                    <% } %>
+        </div>
+</body>
+
+</html>

@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Usuarios</title>
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+
+<body>
+    <%- include('../partials/nav') %>
+        <div class="container">
+            <h1>Usuarios</h1>
+            <a href="/users/crear" class="btn btn-primary">Crear nuevo usuario</a>
+            <br><br>
+            <table>
+                <tr>
+                    <th>Nombre</th>
+                    <th>Email</th>
+                    <th>Rol</th>
+                    <th>Acciones</th>
+                </tr>
+                <% users.forEach(u=> { %>
+                    <tr>
+                        <td>
+                            <%= u.nombre %>
+                        </td>
+                        <td>
+                            <%= u.email %>
+                        </td>
+                        <td>
+                            <form method="POST" action="/users/<%= u.id %>/rol" style="display:inline">
+                                <select name="rol_id" onchange="this.form.submit()">
+                                    <% roles.forEach(rol=> { %>
+                                        <option value="<%= rol.id %>" <%=u.rol_id===rol.id ? 'selected' : '' %>><%=
+                                                rol.nombre %>
+                                        </option>
+                                        <% }) %>
+                                </select>
+                            </form>
+                        </td>
+                        <td>
+                            <a href="/users/<%= u.id %>" class="btn btn-primary">Ver</a>
+                            <a href="/users/eliminar/<%= u.id %>" class="btn btn-danger">Eliminar</a>
+                        </td>
+                    </tr>
+                    <% }) %>
+            </table>
+        </div>
+</body>
+
+</html>

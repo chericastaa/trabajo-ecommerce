@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Editar Producto</title>
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+
+<body>
+    <%- include('../partials/nav') %>
+        <div class="container">
+            <div class="card">
+                <h1>Editar producto</h1>
+                <br>
+                <form method="POST" action="/productos/<%= producto.id %>/editar">
+                    <label>Nombre:</label>
+                    <input type="text" name="nombre" value="<%= producto.nombre %>" required>
+                    <label>Descripción:</label>
+                    <textarea name="descripcion" rows="4"><%= producto.descripcion %></textarea>
+                    <label>Precio:</label>
+                    <input type="number" name="precio" value="<%= producto.precio %>" min="0" step="0.01" required>
+                    <label>Stock:</label>
+                    <input type="number" name="stock" value="<%= producto.stock %>" min="0" required>
+                    <label>URL de imagen:</label>
+                    <input type="text" name="imagen" value="<%= producto.imagen %>">
+                    <button type="submit">Guardar</button>
+                </form>
+                <br>
+                <a href="/productos" class="btn btn-danger">Volver</a>
+            </div>
+        </div>
+</body>
+
+</html>

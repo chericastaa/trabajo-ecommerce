@@ -1,0 +1,19 @@
+<nav>
+    <a href="/">Inicio</a>
+    <a href="/productos">Productos</a>
+    <a href="/carrito">Carrito</a>
+    <% if (user) { %>
+        <a href="/compras">Mis compras</a>
+        <% if (user.rol==='admin' || user.rol==='vendedor' ) { %>
+            <a href="/productos">Gestionar productos</a>
+            <a href="/users">Usuarios</a>
+            <a href="/roles">Roles</a>
+            <a href="/permisos">Permisos</a>
+            <% } %>
+                <span style="margin-left: auto; color: #888;">Hola, <%= user.nombre %></span>
+                <a href="/auth/logout">Cerrar sesión</a>
+                <% } else { %>
+                    <a href="/auth/login" style="margin-left: auto;">Ingresar</a>
+                    <a href="/auth/registro">Crear cuenta</a>
+                    <% } %>
+</nav>

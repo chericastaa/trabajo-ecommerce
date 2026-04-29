@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Crear Rol</title>
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+
+<body>
+    <%- include('../partials/nav') %>
+        <div class="container">
+            <div class="card">
+                <h1>Crear nuevo rol</h1>
+                <br>
+                <form method="POST" action="/roles/crear">
+                    <label>Nombre del rol:</label>
+                    <input type="text" name="nombre" required>
+                    <button type="submit">Crear</button>
+                </form>
+                <br>
+                <a href="/roles" class="btn btn-danger">Volver</a>
+            </div>
+        </div>
+</body>
+
+</html>

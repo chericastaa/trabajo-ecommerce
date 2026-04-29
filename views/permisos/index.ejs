@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Permisos</title>
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+
+<body>
+    <%- include('../partials/nav') %>
+        <div class="container">
+            <h1>Permisos</h1>
+            <a href="/permisos/crear" class="btn btn-primary">Crear nuevo permiso</a>
+            <br><br>
+            <table>
+                <tr>
+                    <th>Nombre</th>
+                    <th>Acciones</th>
+                </tr>
+                <% permisos.forEach(permiso=> { %>
+                    <tr>
+                        <td>
+                            <%= permiso.nombre %>
+                        </td>
+                        <td>
+                            <a href="/permisos/<%= permiso.id %>/editar" class="btn btn-primary">Editar</a>
+                            <a href="/permisos/eliminar/<%= permiso.id %>" class="btn btn-danger">Eliminar</a>
+                        </td>
+                    </tr>
+                    <% }) %>
+            </table>
+        </div>
+</body>
+
+</html>

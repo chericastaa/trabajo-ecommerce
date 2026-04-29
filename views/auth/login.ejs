@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Ingresar</title>
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+
+<body>
+    <%- include('../partials/nav') %>
+        <div class="container">
+            <div class="card" style="max-width: 500px; margin: 0 auto;">
+                <h1>Ingresar</h1>
+                <br>
+                <% if (typeof error !=='undefined' ) { %>
+                    <p style="color: #c5522a; margin-bottom: 15px;">
+                        <%= error %>
+                    </p>
+                    <% } %>
+                        <form method="POST" action="/auth/login">
+                            <label>Email:</label>
+                            <input type="email" name="email" required>
+                            <label>Contraseña:</label>
+                            <div style="position: relative;">
+                                <input type="password" name="password" id="password" required>
+                                <span onclick="togglePassword()"
+                                    style="position: absolute; right: 12px; top: 50%; transform: translateY(-50%); cursor: pointer; color: #888;">👁</span>
+                            </div>
+                            <br>
+                            <button type="submit">Ingresar</button>
+                        </form>
+                        <br>
+                        <p style="text-align: center; color: #888;">¿No tenés cuenta? <a href="/auth/registro"
+                                style="color: #c5522a;">Registrate</a></p>
+            </div>
+        </div>
+        <script>
+            function togglePassword() {
+                const input = document.getElementById('password')
+                input.type = input.type === 'password' ? 'text' : 'password'
+            }
+        </script>
+</body>
+
+</html>

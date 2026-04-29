@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Productos</title>
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+
+<body>
+    <%- include('../partials/nav') %>
+        <div class="container">
+            <h1>Productos</h1>
+            <% if (user && (user.rol==='admin' || user.rol==='vendedor' )) { %>
+                <a href="/productos/crear" class="btn btn-primary">Crear nuevo producto</a>
+                <br><br>
+                <% } %>
+                    <table>
+                        <tr>
+                            <th>Nombre</th>
+                            <th>Precio</th>
+                            <th>Stock</th>
+                            <th>Acciones</th>
+                        </tr>
+                        <% productos.forEach(producto=> { %>
+                            <tr>
+                                <td>
+                                    <%= producto.nombre %>
+                                </td>
+                                <td>$<%= producto.precio %>
+                                </td>
+                                <td>
+                                    <%= producto.stock %>
+                                </td>
+                                <td>
+                                    <a href="/productos/<%= producto.id %>" class="btn btn-success">Ver</a>
+                                    <% if (user && (user.rol==='admin' || user.rol==='vendedor' )) { %>
+                                        <a href="/productos/<%= producto.id %>/editar"
+                                            class="btn btn-primary">Editar</a>
+                                        <a href="/productos/<%= producto.id %>/eliminar"
+                                            class="btn btn-danger">Eliminar</a>
+                                        <% } %>
+                                </td>
+                            </tr>
+                            <% }) %>
+                    </table>
+        </div>
+</body>
+
+</html>

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Editar Rol</title>
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+
+<body>
+    <%- include('../partials/nav') %>
+        <div class="container">
+            <div class="card">
+                <h1>Editar rol: <%= rol.nombre %>
+                </h1>
+                <br>
+                <form method="POST" action="/roles/<%= rol.id %>/editar">
+                    <h3>Permisos:</h3>
+                    <br>
+                    <div class="checkbox-group">
+                        <% permisos.forEach(permiso=> { %>
+                            <div class="checkbox-item">
+                                <input type="checkbox" name="permisos" value="<%= permiso.id %>"
+                                    <%=asignadosIds.includes(permiso.id) ? 'checked' : '' %>
+                                >
+                                <label>
+                                    <%= permiso.nombre %>
+                                </label>
+                            </div>
+                            <% }) %>
+                    </div>
+                    <br>
+                    <button type="submit">Guardar</button>
+                </form>
+                <br>
+                <a href="/roles" class="btn btn-danger">Volver</a>
+            </div>
+        </div>
+</body>
+
+</html>
